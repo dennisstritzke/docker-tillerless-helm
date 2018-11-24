@@ -18,5 +18,7 @@ RUN wget -P /usr/local/bin http://storage.googleapis.com/kubernetes-release/rele
 
 COPY entrypoint.sh /
 
+EXPOSE 44134
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/local/bin/helm"]
