@@ -31,4 +31,16 @@ users:
     token: $SERVICE_ACCOUNT_TOKEN
 EOT
 
+echo "Using Kubernetes at https://$K8_IP"
+echo "Using Namespace $NAMESPACE"
+
+if [ "$SKIP_AUTH_CHECK" = true ]; then
+    set -e
+    echo -e "\n===> Testing Kubernetes access through 'kubectl version'"
+    kubectl version
+    echo "-> Success"
+    set +e
+fi
+
+echo -e "\n===> Running Docker CMD"
 exec "$@"
